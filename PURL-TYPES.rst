@@ -89,6 +89,23 @@ bitnami
       pkg:bitnami/wordpress@6.2.0?arch=arm64&distro=debian-12
       pkg:bitnami/wordpress@6.2.0?arch=arm64&distro=photon-4
 
+buildroot
+---------
+``buildroot`` for Buildroot based packages:
+
+- The default repository for the package recipes is ``https://gitlab.com/buildroot.org/buildroot.git``.
+- The ``name`` is the recipe name residing at `package/<name>/<name>.mk` of the recipe repository.
+- The ``version`` is the package version as defined by the recipe.
+- Qualifier ``rrev``: The Buildroot recipe revision (git tag or git hash).
+- Qualifier ``repository_url`` (optional): an alternative repository URL containing the recipes.
+- ``download_url`` and ``checksum`` may be provided in `qualifiers` or as separate attributes outside of a ``purl`` for
+  proper identification and location of the package to download.
+- Examples::
+
+      pkg:buildroot/bash@5.2.21?rrev=2024.05.3
+      pkg:buildroot/bc@1.07.1?rrev=2024.11.1&download_url=https://ftpmirror.gnu.org/bc/bc-1.07.1.tar.gz&checksum=sha256:62adfca89b0a1c0164c2cdca59ca210c1d44c3ffc46daf9931cf4942664cb02a
+      pkg:buildroot/am33x-cm3@11107db2f1e9e58ee75d4fe9cc38423c9a6e4365?rrev=2024.02-mhcp&repository_url=https://github.com/linux4sam/buildroot-at91.git
+
 cocoapods
 ---------
 ``cocoapods`` for CocoaPods:
@@ -594,7 +611,6 @@ Other candidate types to define:
 - ``atom`` for Atom packages:
 - ``bower`` for Bower JavaScript packages:
 - ``brew`` for Homebrew packages:
-- ``buildroot`` for Buildroot packages
 - ``carthage`` for Cocoapods Cocoa packages:
 - ``chef`` for Chef packages:
 - ``chocolatey`` for Chocolatey packages
